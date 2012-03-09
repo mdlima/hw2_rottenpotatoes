@@ -1,6 +1,73 @@
-\#*\#
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+
+# OS generated files #
+######################
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+
+
+/live
+.rvmrc*
+
+dist/*
+
+## TEXTMATE
+*.tmproj
+tmtags
+
+## EMACS
 *~
-TAGS
-db/schema.rb
-log/
-db/*.sqlite3
+\#*
+.\#*
+
+## VIM
+*.swp
+
+## PROJECT::GENERAL
+coverage
+rdoc
+pkg
+tmp
+oa-live
+db/*.sqlite3*
+log/*.log
+*.log
+
+## PROJECT::SPECIFIC
+*.gem
+.bundle
+.project
+.loadpath
+.yardoc
+doc
+
+Gemfile.lock
+
