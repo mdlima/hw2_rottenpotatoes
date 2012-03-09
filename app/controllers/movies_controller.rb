@@ -7,6 +7,16 @@ class MoviesController < ApplicationController
   end
 
   def index
+    
+    # session.clear
+        
+    if !params[:commit] && (!params[:order_by] && session[:order_by]) || (!params[:ratings] && session[:ratings])
+      redirect_to movies_path(:order_by => session[:order_by] , :ratings => session[:ratings] ) 
+    end
+    
+    session[:order_by] = params[:order_by] if params.has_key? :order_by
+    session[:ratings]  = params[:ratings]  if params.has_key? :ratings
+    
     @order_by = params[:order_by]
     @movies = Movie.order @order_by
 
@@ -17,7 +27,7 @@ class MoviesController < ApplicationController
     @selected_ratings = params[:ratings] || Hash.new(false)
     @movies = @movies.where(:rating => params[:ratings].keys) if params[:ratings]
     
-    # flash[:notice] = "params: #{params}, all_ratings: #{@all_ratings}, selected_ratings: #{@selected_ratings}"
+    # flash[:notice] = "session: order_by=#{session[:order_by]}, ratings=#{session[:ratings]} \n\n\n params: #{params}\n, all_ratings: #{@all_ratings}, selected_ratings: #{@selected_ratings}"
     
   end
 
