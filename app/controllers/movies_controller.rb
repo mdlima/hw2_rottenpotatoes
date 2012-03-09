@@ -7,7 +7,11 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @movies = Movie.all
+    # flash[:notice] = "params: #{params}"
+    @header_classes = Hash.new
+    @order_by = params[:order_by]
+    @movies = Movie.order @order_by
+    @header_classes[@order_by] = "hilite"
   end
 
   def new
