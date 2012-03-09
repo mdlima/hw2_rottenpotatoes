@@ -7,11 +7,18 @@ class MoviesController < ApplicationController
   end
 
   def index
-    # flash[:notice] = "params: #{params}"
-    @header_classes = Hash.new
     @order_by = params[:order_by]
     @movies = Movie.order @order_by
+
+    @header_classes = Hash.new
     @header_classes[@order_by] = "hilite"
+    
+    @all_ratings = Movie.all_ratings
+    @selected_ratings = params[:ratings] || Hash.new(false)
+    @movies = @movies.where(:rating => params[:ratings].keys) if params[:ratings]
+    
+    flash[:notice] = "params: #{params}, all_ratings: #{@all_ratings}, selected_ratings: #{@selected_ratings}"
+    
   end
 
   def new
