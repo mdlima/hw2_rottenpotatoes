@@ -17,7 +17,7 @@ class MoviesController < ApplicationController
     @selected_ratings = params[:ratings] || Hash.new(false)
     @movies = @movies.where(:rating => params[:ratings].keys) if params[:ratings]
     
-    flash[:notice] = "params: #{params}, all_ratings: #{@all_ratings}, selected_ratings: #{@selected_ratings}"
+    # flash[:notice] = "params: #{params}, all_ratings: #{@all_ratings}, selected_ratings: #{@selected_ratings}"
     
   end
 
